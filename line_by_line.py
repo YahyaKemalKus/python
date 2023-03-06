@@ -79,7 +79,7 @@ if __name__ == '__main__':
     resume = True
     handler = process_handler()
     handler.send(None)
-    t = Thread(target=lambda x: asyncio.run(x()), args=(main,))
+    t = Thread(target=lambda coro: asyncio.run(coro()), args=(main,))
     t.start()
     time.sleep(4)  # change the seconds to observe.
     handler.send(False)  # remove this line to be sure that it stops the function execution.

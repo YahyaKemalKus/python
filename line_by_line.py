@@ -78,5 +78,5 @@ if __name__ == '__main__':
     handler.send(None)
     t = Thread(target=lambda x: asyncio.run(x()), args=(main,))
     t.start()
-    time.sleep(4)
+    time.sleep(4)  # change the seconds to observe.
     handler.send(False)

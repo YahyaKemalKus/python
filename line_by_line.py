@@ -63,8 +63,11 @@ async def tasky():
     global resume
     line_iter = func(1)
     while resume:
-        print(next(line_iter))
-        time.sleep(1)
+        try:
+            print(next(line_iter))
+            time.sleep(1)
+        except StopIteration:
+            print("execution finished")
 
 
 async def main():
@@ -79,4 +82,4 @@ if __name__ == '__main__':
     t = Thread(target=lambda x: asyncio.run(x()), args=(main,))
     t.start()
     time.sleep(4)  # change the seconds to observe.
-    handler.send(False)
+    handler.send(False)  # remove this line to be sure that it stops the function execution.
